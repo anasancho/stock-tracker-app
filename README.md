@@ -1,4 +1,4 @@
-# python-flask_quandl_stock-tracker
+# stock-tracker-app
 
 ## Pre-requisitos:
   * Credenciais da API Quandl (serviço gratuito)
