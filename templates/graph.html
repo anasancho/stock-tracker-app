@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+	{{script|safe}}
+
+	<div class="article-input__hero">
+		{{ttag}}
+	</div>
+	<div class="article-input__triple">
+		{{yrtag}}
+	</div>
+	<br>
+	{{div|safe}}
+	<br>
+	<div class="article-input__run">
+		<a href=" {{ url_for('index') }} ">
+			<button class="run-analysis Button">Voltar</button>
+		</a>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			updateText();
+		});
+		
+		$('.new-analysis').click(function() {
+			location.reload();
+		});
+	</script>
+{% endblock %}

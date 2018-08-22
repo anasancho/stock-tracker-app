@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+	<div class="article-input__hero">
+		Vamos analisar algumas ações S&#38;P 500!
+	</div>
+	
+	<div class="article-input__triple">
+		<div class="article-input__portfolio">
+
+			<form id='input' method='post' action='index'>
+				<p>
+					<div class="article-input__header">Selecione a Empresa Desejada</div>
+					<select name="stock_ticker" class="selectpicker form-control" style="color:black;">
+						<option value="MMM" style="color:black;">3M Company</option>
+						<option value="GOOGL" style="color:black;">Alphabet Inc. Class A</option>
+						<option value="GOOG" style="color:black;">Alphabet Inc. Class C</option>
+						<option value="AMZN" style="color:black;">Amazon.com Inc.</option>
+						<option value="AAPL" style="color:black;">Apple Inc.</option>
+						<option value="BAC" style="color:black;">Bank of America Corp.</option>
+						<option value="BA" style="color:black;">Boeing Company</option>
+						<option value="CAT" style="color:black;">Caterpillar Inc.</option>
+						<option value="CSCO" style="color:black;">Cisco Systems</option>
+						<option value="CMCSA" style="color:black;">Comcast Corp.</option>
+						<option value="EA" style="color:black;">Electronic Arts</option>
+						<option value="EFX" style="color:black;">Equifax Inc.</option>
+						<option value="XOM" style="color:black;">Exxon Mobil Corp.</option>
+						<option value="FB" style="color:black;">Facebook Inc.</option>
+						<option value="F" style="color:black;">Ford Motor</option>
+						<option value="GE" style="color:black;">General Electric</option>
+						<option value="GM" style="color:black;">General Motors</option>
+						<option value="GS" style="color:black;">Goldman Sachs Group</option>
+						<option value="HAL" style="color:black;">Halliburton Co.</option>
+						<option value="HOG" style="color:black;">Harley-Davidson</option>
+						<option value="HPE" style="color:black;">Hewlett Packard Enterprise</option>
+						<option value="IBM" style="color:black;">International Business Machines</option>
+						<option value="JCI" style="color:black;">Johnson &#38; Johnson</option>
+						<option value="JPM" style="color:black;">JPMorgan Chase &#38; Co.</option>
+						<option value="K" style="color:black;">Kellogg Co.</option>
+						<option value="KHC" style="color:black;">Kraft Heinz Co.</option>
+						<option value="LMT" style="color:black;">Lockheed Martin Corp.</option>
+						<option value="MA" style="color:black;">Mastercard Inc. Class A</option>
+						<option value="MCD" style="color:black;">McDonald's Corp.</option>
+						<option value="MGM" style="color:black;">MGM Resorts International</option>
+						<option value="MSFT" style="color:black;">Microsoft Corp.</option>
+						<option value="MS" style="color:black;">Morgan Stanley</option>
+						<option value="MSI" style="color:black;">Motorola Solutions Inc.</option>
+						<option value="NFLX" style="color:black;">Netflix Inc.</option>
+						<option value="NKE" style="color:black;">Nike</option>
+						<option value="NOC" style="color:black;">Northop Grumman Corp.</option>
+						<option value="NVDA" style="color:black;">Nvidia Corp.</option>
+						<option value="ORCL" style="color:black;">Oracle Corp.</option>
+						<option value="PYPL" style="color:black;">PayPal</option>
+						<option value="PEP" style="color:black;">PepsiCo Inc.</option>
+						<option value="PFE" style="color:black;">Pfizer Inc.</option>
+						<option value="PM" style="color:black;">Philip Morris International</option>
+						<option value="PG" style="color:black;">Procter &#38; Gamble</option>
+						<option value="QCOM" style="color:black;">QUALCOMM Inc.</option>
+						<option value="RTN" style="color:black;">Raytheon Co.</option>
+						<option value="ROK" style="color:black;">Rockwell Automation Inc.</option>
+						<option value="SLB" style="color:black;">Schlumberger Ltd.</option>
+						<option value="SPGI" style="color:black;">S&#38;P Global Inc.</option>
+						<option value="SBUX" style="color:black;">Starbucks Corp.</option>
+						<option value="TXN" style="color:black;">Texas Instruments</option>
+						<option value="TWTR" style="color:black;">Twitter Inc.</option>
+						<option value="TRIP" style="color:black;">TripAdvisor</option>
+						<option value="FOXA" style="color:black;">Twenty-First Century Fox Class A</option>
+						<option value="FOX" style="color:black;">Twenty-First Century Fox Class B</option>
+						<option value="UNP" style="color:black;">Union Pacific</option>
+						<option value="VZ" style="color:black;">Verizon Communications</option>
+						<option value="V" style="color:black;">Visa Inc.</option>
+						<option value="WMT" style="color:black;">Walmart</option>
+						<option value="DIS" style="color:black;">Walt Disney Company (The)</option>
+						<option value="WFC" style="color:black;">Wells Fargo</option>
+						<option value="WHR" style="color:black;">Whirlpool Corp.</option>
+						<option value="XRX" style="color:black;">Xerox</option>
+						<option value="ZBH" style="color:black;">Zions Bancorp</option>
+					</select>
+				</p>
+
+				<p>
+					<div class="article-input__header">Selecione o tipo de dado a ser modelado</div>
+					<select name="model_type" class="selectpicker form-control" style="color:black;">
+						<option value="open" style="color:black;">Valores na abertura</option>
+						<option value="close" style="color:black;">Valores no fechamento</option>
+					</select>
+				</p>
+
+				<p>
+					<div class="article-input__header">Defina o tempo futuro a ser modelado</div>
+					<!--<input type='text' placeholder='Número de dias' name='future_days' onkeypress="return isNumberKey(event)"/>-->
+					<select name="future_days" class="selectpicker form-control" style="color:black;">
+						<option value="7" style="color:black;">Uma semana</option>
+						<option value="15" style="color:black;">Duas semanas</option>
+						<option value="30" style="color:black;">Um mês</option>
+						<option value="60" style="color:black;">Três meses</option>
+						<option value="180" style="color:black;">Um semestre</option>
+						<option value="365" style="color:black;">Um ano</option>
+					</select>
+				</p>
+
+					<br>
+				
+				<p>
+					<input type="button" class="upload Button" id="show_analytics" value="Opções">
+				</p>
+
+				<p>
+					<div id="analytics">
+						<br>
+						<h4>Especifique informações extras a serem plotadas.</h4>
+						<table id="analytics_tbl">
+							
+							<tr>
+								<th>
+									Valores Reais Observados das Ações
+								</th>
+							
+								<th>
+									<!---->
+								</th>
+		
+								<th>				
+									<!---->
+								</th>
+
+								<th>
+									<!---->
+								</th>
+							</tr>
+							
+							<tr>
+								<td>
+									<br>
+										<input type="checkbox" name='features' checked="true" value='p_close'>&nbsp;Valor Real no Fechamento
+									<br>
+								</td>
+
+
+								<td></td>
+							</tr>
+
+							<tr>
+								<td>
+									<br>
+										<input type="checkbox" name='features' checked="false" value='p_open'>&nbsp;Valor Real na Abertura
+									<br>
+								</td>
+								
+
+								<td></td>
+							</tr>
+
+							<tr>
+								<td>
+									<br>
+										<input type="checkbox" name='features' value='p_range'>&nbsp;Range Real (High/Low)
+									<br>
+								</td>
+								
+
+								<td></td>
+							</tr>
+
+							<tr>
+								<td>
+									<br>
+									<br>
+								</td>
+								
+								<td></td>
+							</tr>
+
+						</table>
+					</div>
+				</p>
+
+				<div id=run_analysis_bt class="article-input__run">
+					<input type="submit" class="run-analysis Button" id="run_analytics_bt" value="Executar An&aacute;lise">
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+{% endblock %}

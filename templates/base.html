@@ -1,0 +1,188 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}
+        {{ title }}
+    {% else %}
+        An&aacute;lise de A&ccedil;&otilde;es - IBM Code Brasil
+    {% endif %}
+{% endblock %}
+
+{% block navbar %}
+    <div class="header-bar">
+        <div class="header-bar__home">
+            <div class="header-bar__home__button">
+                <strong>Análise e Predição de Ações&nbsp;</strong>
+            </div>
+            <div class="header-bar__new">
+                <a href="https://github.com/ibm-code-br" class="new-analysis Button secondary">IBM Code Brasil</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<html>
+    <head>
+        <!-- style resources -->
+        <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet"></link>
+        <link href="{{ url_for('static', filename='css/new.css') }}" rel="stylesheet"></link>
+        <!-- <link href="{{ url_for('static', filename='css/style_ticker.css') }}" rel="stylesheet"></link> -->
+        <link href="{{ url_for('static', filename='images/WatsonLogo.png') }}" rel="icon" type="image/png"></link>
+        <!-- scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <!-- bookeh resources -->
+        <link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-{{bv}}.min.css" type="text/css" /></link>
+        <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-{{bv}}.min.js"></script>
+        
+    </head>
+
+    <body class="sandboxtwo">
+        <div class="container">
+
+            <!-- purple top block -->
+            <div class="article-input">    
+                
+                <br>
+                <br>
+
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-info" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                
+                <!-- app content block -->
+                {% block app_content %}
+                
+                {% endblock %}
+            </div>
+
+            <div id=load_tab>
+                <br>
+                <br>
+                <div align="center">
+                    <img src="{{ url_for('static', filename='images/gears.svg') }}" alt="loading">
+                    <h2> Sua análise será completada em breve, por favor aguarde. </h2><br>
+                    <h3> Isto pode levar alguns minutos. </h3>
+                </div>
+                <br>
+                <br>
+            </div>
+
+            <!-- white bottom block -->
+            <div class="wii-info tab">
+                <div class="wii-info__tiles">
+                    <h3>
+                        Serviços que tornaram isso possível
+                    </h3>
+                    <div class="wii-tile">
+                        <div class="icon-bubble">
+                            <a href="https://console.bluemix.net/catalog/starters/python" target="_blank">
+                                <img src="{{ url_for('static', filename='images/icons/cf.png') }}" alt="cf">
+                            </a>
+                        </div>
+                        <p>
+                            IBM Cloud Foundry
+                        </p>
+                    </div>
+                    <div class="wii-tile">
+                        <div class="icon-bubble">
+                            <a href="https://facebook.github.io/prophet/" target="_blank">
+                                <img src="{{ url_for('static', filename='images/icons/fbp.png') }}" alt="fbprophet">
+                            </a>
+                        </div>
+                        <p>
+                            FBProphet Forecaster
+                        </p>
+                    </div>
+                    <div class="wii-tile">
+                        <div class="icon-bubble">
+                            <a href="https://bokeh.pydata.org/en/latest/" target="_blank">
+                                <img src="{{ url_for('static', filename='images/icons/bokeh.png') }}" alt="bokeh">
+                            </a>
+                        </div>
+                        <p>
+                            Bokeh Interactive Plots
+                        </p>
+                    </div>
+                    <div class="wii-tile">
+                        <div class="icon-bubble">
+                            <a href="https://www.quandl.com/institutions" target="_blank">
+                                <img src="{{ url_for('static', filename='images/icons/quandl.png') }}" alt="quandl">
+                            </a>
+                        </div>
+                        <p>
+                            Quandl Financial Data
+                        </p>
+                    </div>
+                </div>
+                
+                <!--  -->
+                <div class="wii-info__text">
+                    <h3>
+                        Sobre este aplicativo Python da Cloud Foundry
+                        <p></p>
+                    </h3>
+                    
+                    <div class="wii-tile">
+                        <a href="https://www.quandl.com/data/EOD-End-of-Day-US-Stock-Prices" target="_blank">
+                            De onde vêm os dados?
+                        </a>
+                        <p>
+                            <br>
+                            As informações sobre as ações são provenientes da EOD US Stock Prices, publicadas pela QUOTEMEDIA gratuitamente;
+                            este aplicativo faz requisições utilizando a API do Quandl para capturar os dados em formato JSON. Posteriormente
+                            os dados são inseridos em um DataFrame Pandas para análise.
+                        </p>
+                    </div>
+
+                    <br>
+                    <div class="wii-tile">
+                        <a href="https://github.com/facebook/prophet" target="_blank">
+                            Como funciona a predição?
+                        </a>
+                        <p>
+                            <br>
+                            As predições são feitas utilizando a biblioteca fbprophet, que executa um algoritmo de aprendizado de
+                            máquina voltado para a modelagem e predição de conjuntos de dados do tipo TimeSeries. O fbprophet é
+                            baseado em modelos aditivos (regressão não-paramétrica).
+                        </p>
+                    </div>
+
+                    <br>
+                    <div class="wii-tile">
+                        <a href="https://github.com/munhozpf/python-flask_quandl_stock-tracker/" target="_blank">
+                            Código-Fonte
+                        </a>
+                        <p>
+                            <br>
+                            Clique no link acima para acessar o repositório Git com tudo o que você precisa para implementar este aplicativo na IBM Cloud.
+                        </p>
+                    </div>
+                </div>
+            
+            </div>
+
+        </div>
+
+    </body>
+</html>
+
+<script src="{{ url_for('static', filename='js/run_analysis.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        updateText();
+    });
+    $('.new-analysis').click(function() {
+        location.reload();
+    });
+</script>
+
+
+{% endblock %}
