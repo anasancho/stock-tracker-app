@@ -1,0 +1,1 @@
+applications:- path: .  memory: 8G  instances: 1  disk_quota: 2G
